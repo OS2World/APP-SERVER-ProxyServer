@@ -1,0 +1,23 @@
+  The following are some features that I'd like to add to tinyproxy in the
+future.  Where possible, I've listed the person who suggested it.  This
+list is in no particular order.  And hey, if you want to implement one of
+these, or another idea you have, go right ahead.  Just mail me the diff
+against the 1.1 tree and I'll integrate it if possible. 
+
+  - Change the way sockets are handled so everything is nonblocking. 
+    This will speed things up a bit and ensure smooth operation
+    on slow links. 
+    Suggested: Thomas Roessle.
+  - Include hooks so other types of proxies can be modularly added to  
+    the source tree.  Then people can simply choose which types of 
+    proxies (ftp, www, etc) they'd like enabled in tinyproxy.h 
+    Suggested: Tarun Tuli.
+  - Make the source tree autoconf-ed so people can avoid editing
+    tinyproxy.h and the like.
+  - Add some kind of access control mechanism - probably IP-based, 
+    so users can choose only to let people from certain networks/ips
+    use the proxy.  This becomes more of an issue with FTP proxies
+    and the like.
+  - Find a more elegant solution to embedding HTML documents in the 
+    source than the current method.  (see httperr() and showstats() for 
+    examples of how it's done right now).

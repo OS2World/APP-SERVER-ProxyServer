@@ -1,0 +1,93 @@
+.\" sdyoung / 13:58 09/14/1998
+.Dd September 14, 1998
+.Dt TINYPROXY 8
+.Os
+.Sh NAME
+.Nm tinyproxy
+.Nd a small HTTP proxy server
+.Sh SYNOPSIS
+.Nm tinyproxy
+.Op Fl vhd
+.Op Fl p Ar port
+.Op Fl l Ar logfile
+.Op Fl a Ar headername
+.Op Fl w Ar loadaverage
+.Op Fl u Ar username
+.Sh DESCRIPTION
+.Nm tinyproxy
+is an HTTP proxy server designed to consume a minimum of system resources.
+It listens on a given TCP port and handles HTTP proxy requests.
+.Sh OPTIONS
+The following options are available:
+.Bl -tag -width indent
+.It Fl v
+Display version information and exit.
+.It Fl h
+Display a short help screen of commandline arguments and exit.
+.It Fl d 
+Don't daemonize; stay in the foreground.
+.It Fl p Ar port
+Listen to
+.Ar port
+instead of the default as defined in tinyproxy.h.
+.It Fl l Ar logfile
+Log to the file
+.Ar logfile
+instead of the default as defined in tinyproxy.h.
+.It Fl a Ar headername
+Allow the header
+.Ar headername
+through to the server (anon mode only).  It is highly recommended that you
+specify -a Host: and -a Authorization:.
+.It Fl w Ar loadaverage
+Stop handling requests when the load is
+.Ar loadaverage
+or higher.  Specifying a loadaverage of 0.00 will disable this feature.
+(disabled by default)
+.It Fl u Ar username
+Begin running as
+.Ar username
+after the port has been bound and the logfile has been opened.  Only
+works if tinyproxy is being run as root.  "" to disable.
+.El
+.Pp
+In addition to these commandline options, there are also several signals
+that can be sent to tinyproxy while it is running to generate debugging
+information and to force certain events.
+.Bl -tag -width indent
+.It Fl SIGUSR1
+Dump a summary of all current connections to the logfile.
+.It Fl SIGHUP
+Force
+.Nm tinyproxy
+to do a garbage collection on the current connections linked list.  This
+is usually done automatically after a certain number of connections have
+been handled.
+.El
+.Sh FILES
+.nf
+.ta \w'/var/log/tinyproxy.log   'u
+/var/log/tinyproxy.log The default logfile tinyproxy uses.
+.fi
+.Sh AUTHOR
+Steven Young <sdyoung@well.com>
+.Sh BUGS
+.Nm tinyproxy 
+will truncate absurdly long HTTP requests (>8192 characters).  Note that 
+most browsers will probably crash before ever generating such a large
+request, and this upper limit is easily changed in tinyproxy.h.
+For some reason, when sent SIGTERM,
+.Nm tinyproxy 
+occasionally waits for the
+next incoming connection before exiting.
+.Sh COPYRIGHT
+.Nm tinyproxy
+is distributed under the GNU Public License (GPL).  For more information
+on the GPL, please see the file COPYING which should have been included in
+the archive with tinyproxy.  Failing that, http://www.fsf.org/ will
+doubtless have a copy up for you to peruse.  Please don't use this
+software if you don't agree to the terms specified therein.
+.Sh AVAILABILITY
+The latest version of
+.Nm tinyproxy
+can be aquired from http://www.ninsei.com/tinyproxy.

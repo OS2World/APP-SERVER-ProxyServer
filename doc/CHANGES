@@ -1,0 +1,12 @@
+/* This file documents the changes to tinyproxy as the versions
+ * have progressed. */
+v1.0a : Created.
+v1.0b : Cleaned up exit codes (now uses sysexits.h) 
+        Uses daemon() from -lbsd instead of daemonize().
+        Now supports ports other than 80.
+v1.0c : Support for ANON mode.
+v1.0d : ANON mode now supports -a to let user-specified headers through.
+        Various bugfixes in readline().
+v1.1  : Load average monitoring added.
+        Remote proxy monitoring added.
+        Added -u (change to user).

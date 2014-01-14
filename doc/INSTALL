@@ -1,0 +1,41 @@
+  INSTALLING
+  ----------
+ 
+  Here are some nice step-by-step instructions on how to get tinyproxy up
+and running.
+
+  - Get the latest version from http://tinyproxy.attacca.com/
+
+  - Edit the Makefiles in src/ and doc/ off the main tinyproxy directory.
+    The things to pay attention to are the paths that compiled output
+    and manpages are going to be installed to.  They're preconfigured
+    for Linux.  In addition, please also look in src/tinyproxy.h - 
+    there are many parameters to be changed within.  Anyone up for
+    autoconfing this whole thing?
+
+  - Run "make install" from the root tinyproxy directory.
+
+  - Type "man tinyproxy" to figure out what commandline arguments 
+    you want to specify.  Most people will simply modify tinyproxy.h
+    (see step 1) to meet their needs, so it's doubtful any commandline
+    arguments will be required, unless you're using ANON mode filtering. 
+    But the manpage is good to read anyway.
+
+  - If you want tinyproxy to run every time you start your system,
+    put it in rc.local (or your system's equivalent).  It can
+    just be run like so:
+
+    /usr/local/bin/tinyproxy
+
+    (or whatever path you installed tinyproxy to)
+
+  - Once you have things up and running, you have the option of going
+    into the 'doc' subdirectory off the main tinyproxy directory and
+    running:
+
+    ./report.sh
+
+   This will mail a short report about your system (more or less just the
+   OS version and how much memory tinyproxy is taking up) to
+   sdyoung@well.com so I can gather a list of what operating systems it's 
+   been tried under, etc.

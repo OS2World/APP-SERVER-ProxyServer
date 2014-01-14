@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------
+                         tinyproxy 1.1 is now out!
+--------------------------------------------------------------------------------
+
+  tinyproxy is a small HTTP proxy, ideal for use in small network
+situations where a (much) larger, caching proxy like squid might
+very well be overkill, or a security hazard.  New in this version:
+
+  - General source cleanup.
+  - Load average monitoring (you can configure tinyproxy to stop
+    handling connections after the load average reaches a certain
+    point).
+  - Remote monitoring of proxy status (you can get the server 
+    stats previously only accessable via SIGUSR1 through the
+    WWW instead).
+  - The ability to change users after binding to a port and 
+    opening the log files - thus it can run as non-root even
+    when listening on a low port.
+
+  1.1 can be obtained at:
+  http://tinyproxy.attacca.com/ 
+
+  The author can be contacted at sdyoung@well.com.  tinyproxy is
+distributed under the GPL.
